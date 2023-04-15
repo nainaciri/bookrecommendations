@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Book Recommendations for Shekinah</title>
+    <style>
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        // Book titles and authors
+        let bookData = {
+            queer: [
+                { title: "The Queer Art of Failure", author: "Judith Halberstam" },
+                { title: "Fun Home: A Family Tragicomic", author: "Alison Bechdel" },
+                { title: "Stone Butch Blues", author: "Leslie Feinberg" },
+                { title: "Giovanni's Room", author: "James Baldwin" },
+                { title: "Orlando: A Biography", author: "Virginia Woolf" }
+            ],
+            psychology: [
+                { title: "Thinking, Fast and Slow", author: "Daniel Kahneman" },
+                { title: "The Power of Habit", author: "Charles Duhigg" },
+                { title: "Influence: The Psychology of Persuasion", author: "Robert Cialdini" },
+                { title: "The Tell-Tale Brain", author: "V.S. Ramachandran" },
+                { title: "The Man Who Mistook His Wife for a Hat", author: "Oliver Sacks" }
+            ],
+            attachment: [
+                { title: "Attachment Theory in Practice", author: "Sue Johnson" },
+                { title: "Attached: The New Science of Adult Attachment", author: "Amir Levine and Rachel Heller" },
+                { title: "Becoming Attached: First Relationships and How They Shape Our Capacity to Love", author: "Robert Karen" },
+                { title: "The Attachment Theory Workbook", author: "Annie Chen" },
+                { title: "Hold Me Tight: Seven Conversations for a Lifetime of Love", author: "Sue Johnson" }
+            ],
+            colonialism: [
+                { title: "The Wretched of the Earth", author: "Frantz Fanon" },
+                { title: "Orientalism", author: "Edward Said" },
+                { title: "The Birth of the West: Rome, Germany, France, and the Creation of Europe in the Tenth Century", author: "Paul Collins" },
+                { title: "The Colonizer and the Colonized", author: "Albert Memmi" },
+                { title: "Imagining Internationalism in American and British Labor, 1939-49", author: "Victor Silverman" }
+            ],
+            romance: [
+                { title: "The Hating Game", author: "Sally Thorne" },
+                { title: "The Kiss Quotient", author: "Helen Hoang" },
+                { title: "Me Before You", author: "Jojo Moyes" },
+                { title: "The Rosie Project", author: "Graeme Simsion" },
+               
+                { title: "The Flatshare", author: "Beth O'Leary" }
+],
+fantasy: [
+{ title: "A Song of Ice and Fire Series", author: "George R.R. Martin" },
+{ title: "The Lord of the Rings Series", author: "J.R.R. Tolkien" },
+{ title: "Harry Potter Series", author: "J.K. Rowling" },
+{ title: "The Chronicles of Narnia Series", author: "C.S. Lewis" },
+{ title: "The Stormlight Archive Series", author: "Brandon Sanderson" }
+]
+};    // Function to get book recommendations based on selected interest
+    function getBookRecommendations() {
+        // Get selected interest
+        let selectedInterest = document.getElementById('interest').value;
+        // Get book recommendations for selected interest
+        let books = bookData[selectedInterest];
+        // Get random book from the list
+        let randomBook = books[Math.floor(Math.random() * books.length)];
+        // Display book title and author
+        let resultElement = document.getElementById('result');
+        resultElement.innerHTML = `Book Title: ${randomBook.title}<br>Author: ${randomBook.author}`;
+    }
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Recommendations for Shekinah</h1>
+        <label for="interest">Select your interest:</label>
+        <select id="interest">
+            <option value="queer">Queer Literature</option>
+            <option value="psychology">Psychology</option>
+            <option value="attachment">Attachment Theory</option>
+            <option value="colonialism">Colonialism Studies</option>
+            <option value="romance">Romance</option>
+            <option value="fantasy">Fantasy</option>
+        </select>
+        <button onclick="getBookRecommendations()">Get Book Recommendation</button>
+        <div id="result"></div>
+    </div>
+</body>
+</html>
